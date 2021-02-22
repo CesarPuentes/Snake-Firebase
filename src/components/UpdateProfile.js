@@ -22,9 +22,9 @@ export default function UpdateProfile() {
     setLoading(true)
     setError("")
 
-    if (emailRef.current.value !== currentUser.email) {
-      promises.push(updateEmail(emailRef.current.value))
-    }
+    // if (emailRef.current.value !== currentUser.email) {
+    //   promises.push(updateEmail(emailRef.current.value))
+    // }
     if (passwordRef.current.value) {
       promises.push(updatePassword(passwordRef.current.value))
     }
@@ -33,8 +33,8 @@ export default function UpdateProfile() {
       .then(() => {
         history.push("/")
       })
-      .catch(() => {
-        setError("Failed to update account")
+      .catch((e) => {
+        setError("Failed to update account: " + e)
       })
       .finally(() => {
         setLoading(false)
@@ -48,15 +48,6 @@ export default function UpdateProfile() {
           <h2 className="text-center mb-4">Update Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                ref={emailRef}
-                required
-                defaultValue={currentUser.email}
-              />
-            </Form.Group>
             <Form.Group id="password">
               <Form.Label>Password</Form.Label>
               <Form.Control

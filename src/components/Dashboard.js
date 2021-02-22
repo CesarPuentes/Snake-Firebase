@@ -1,10 +1,12 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import { db } from "../firebase";
 
 export default function Dashboard() {
   const [error, setError] = useState("")
+  const [data, setdbData] = useState([]);
   const { currentUser, logout } = useAuth()
   const history = useHistory()
 
@@ -19,6 +21,18 @@ export default function Dashboard() {
     }
   }
 
+    //get data from db
+    const getDataFirebase = async (user) => {
+      await db.collection("scores").doc(currentUser.email).onSnapshot((querySnapshot) => {
+        setdbData(querySnapshot.data());
+      });
+    };
+
+    useEffect(() => {
+      getDataFirebase(currentUser.mail)
+    }, []);
+    
+
   return (
     <>
       <Card>
@@ -26,6 +40,8 @@ export default function Dashboard() {
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {currentUser.email}
+          <br/>
+          <strong>Your previous score:</strong> {data.score}
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
             Update Profile
           </Link>

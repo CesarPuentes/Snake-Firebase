@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
 
 
   async function signup(email, password) {
-    await db.collection('scores').doc(email).set({score:0});
+    await db.collection('scores').doc(email.toLowerCase()).set({score:0});
     return auth.createUserWithEmailAndPassword(email, password)
   }
 

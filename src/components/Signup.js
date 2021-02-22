@@ -63,6 +63,12 @@ export default function Signup() {
       <div className="w-100 text-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
       </div>
+
+      <div className="w-100 text-center mt-2">
+        You can create a temporary mail <a target="_blank" href="https://temporarymail.com" > Here </a>
+      </div>
+
+      
     </>
   )
 }

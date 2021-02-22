@@ -2,6 +2,7 @@ import React, {useRef, useState, useEffect} from 'react'
 import { useInterval } from './game_components/useIntervals'
 import { useAuth } from "../contexts/AuthContext"
 import { db } from "../firebase";
+import { Link } from "react-router-dom"
 
 import {CANVAS_SIZE,
     SNAKE_START,
@@ -112,7 +113,6 @@ const Game = () => {
       <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
         <h1>Previous Score: {data.score} </h1>
         <h1>Score: {score}</h1>
-        <h3>Player: {score}</h3>
         <canvas
           style={{ border: "1px solid black" }}
           ref={canvasRef}
@@ -121,6 +121,11 @@ const Game = () => {
         />
         {gameOver && <div>GAME OVER!</div>}
         <button onClick={startGame}>Start Game</button>
+        <button>
+          <Link to="/">
+            Go back to dahsboard
+          </Link>
+          </button>
       </div>
     );
   };
