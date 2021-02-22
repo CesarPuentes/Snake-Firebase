@@ -3,13 +3,13 @@ import "firebase/auth";
 import 'firebase/firestore';
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyDZMbLoqMWvePjewWHAbfzrZwLP4O25SUA",
-  authDomain: "bullet-hell-98a4c.firebaseapp.com",
-  databaseURL: "https://bullet-hell-98a4c-default-rtdb.firebaseio.com",
-  projectId: "bullet-hell-98a4c",
-  storageBucket: "bullet-hell-98a4c.appspot.com",
-  messagingSenderId: "786210436538",
-  appId: "1:786210436538:web:17a2f60be6c3ccb3765983"
+  apiKey: REACT_APP_FIREBASE_API_KEY,
+  authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: REACT_APP_FIREBASE_APP_ID
 });
 
 
