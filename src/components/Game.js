@@ -20,7 +20,9 @@ const Game = () => {
     const [dir, setDir] = useState([0, -1]);
     const [speed, setSpeed] = useState(null);
     const [gameOver, setGameOver] = useState(false);
+    let [turn, setTurn] = useState();
     let [score, setScore] = useState(0);
+    console.log("Turn: " + turn)
 
     useInterval(() => gameLoop(), speed);
   
@@ -29,8 +31,65 @@ const Game = () => {
       setGameOver(true);
     };
   
-    const moveSnake = ({ keyCode }) =>
-      keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
+    const moveSnake = ({ keyCode }) =>{
+      console.log(keyCode)
+      if ((keyCode == 37)){
+        if(turn=="right")
+        {
+          //pass
+        }
+        else
+        {
+          setDir(DIRECTIONS[keyCode])   
+          setTurn("left") 
+        }
+
+      }
+      else if (keyCode == 38){
+        if(turn=="down")
+        {
+          //pass
+        }
+        else
+        {
+          setDir(DIRECTIONS[keyCode])
+          setTurn("up")
+        }
+
+      }
+      else if (keyCode == 39)
+      {
+        if(turn=="left")
+        {
+          //pass
+        }
+        else
+        {
+          setDir(DIRECTIONS[keyCode])
+          setTurn("right")
+        }
+        
+      }
+      else if (keyCode == 40){
+        if(turn=="up")
+        {
+          //pass
+        }
+        else
+        {
+          setDir(DIRECTIONS[keyCode])
+          setTurn("down")
+        }
+
+      }
+      else{
+        console.log("Weird thing happened!")
+        //pass
+      }
+      //keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
+    }
+
+      
   
     const createApple = () =>
       apple.map((_a, i) => Math.floor(Math.random() * (CANVAS_SIZE[i] / SCALE)));
@@ -80,6 +139,7 @@ const Game = () => {
     };
   
     const startGame = () => {
+      setTurn("") 
       score = setScore(0);
       setSnake(SNAKE_START);
       setApple(APPLE_START);
