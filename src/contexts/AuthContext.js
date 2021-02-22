@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
-import { auth } from "../firebase"
+import { auth, db } from "../firebase"
+import 'firebase/firestore';
 
 const AuthContext = React.createContext()
 
@@ -11,7 +12,9 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
 
-  function signup(email, password) {
+
+  async function signup(email, password) {
+    await db.collection('scores').doc(email).set({score:0});
     return auth.createUserWithEmailAndPassword(email, password)
   }
 
@@ -35,6 +38,11 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
+  async function updateScore(user, score){
+    //await db.collection('scores').doc('usuario2');
+    return await db.collection('scores').doc(user).set({score:score});
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user)
@@ -51,7 +59,8 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    updateScore
   }
 
   return (
