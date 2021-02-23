@@ -1,8 +1,8 @@
-Scope of the project: This project aims to implement a simple back-end using Firebase to provide data storage of user accounts and their score while the front-end logic keeps track of the player score, re-routes from dash-board to game and vice-versa and also a refactor that was pending in the original snake project was made. The project still needs some work in beautifying the UI a bit and correcting the positioning of the game canvas. (Thanks to youtuber Weibenfalk for his tutorial on the snake game. Here you can find his channel: https://www.youtube.com/channel/UCnnnWy4UTYN258FfVGeXBbg).
+**Scope of the project**: This project aims to implement a simple back-end using Firebase to provide data storage of user accounts and their score while the front-end logic keeps track of the player score, re-routes from dash-board to game and vice-versa and also a refactor that was pending in the original snake project was made. The project still needs some work in beautifying the UI a bit and correcting the positioning of the game canvas. (Thanks to youtuber Weibenfalk for his tutorial on the snake game. Here you can find his channel: https://www.youtube.com/channel/UCnnnWy4UTYN258FfVGeXBbg).
 
 ![Screenshot](sample.png)
 
-Steps to install:
+**Steps to install**:
 
 1. To install the packages use ### `npm start`, then ### `npm run`.
 
