@@ -170,9 +170,11 @@ const Game = () => {
     
   
     return (
+      <div>
       <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
         <h1>Previous Score: {data.score} </h1>
         <h1>Score: {score}</h1>
+       
         <canvas
           style={{ border: "1px solid black" }}
           ref={canvasRef}
@@ -186,6 +188,9 @@ const Game = () => {
             Go back to dahsboard
           </Link>
           </button>
+      </div>
+      <h5>(Use the arrow keys to move)</h5>
+      
       </div>
     );
   };
