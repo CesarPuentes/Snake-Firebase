@@ -22,7 +22,6 @@ const Game = () => {
     const [gameOver, setGameOver] = useState(false);
     let [turn, setTurn] = useState();
     let [score, setScore] = useState(0);
-    console.log("Turn: " + turn)
 
     useInterval(() => gameLoop(), speed);
   
